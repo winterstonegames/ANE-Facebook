@@ -9,9 +9,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.facebook.CallbackManager;
-import com.facebook.FacebookCallback;
-import com.facebook.FacebookException;
+import com.facebook.*;
 
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
@@ -21,7 +19,7 @@ public class LoginActivity extends Activity
 	public static String extraPrefix = "com.freshplanet.ane.AirFacebook.LoginActivity";
 
 	private CallbackManager callbackManager;
-	
+
 	private AirFacebookExtensionContext _context = null;
 
 	@Override
@@ -43,6 +41,13 @@ public class LoginActivity extends Activity
 		String type = extras.getString(extraPrefix+".type");
 
 		callbackManager = CallbackManager.Factory.create();
+
+		new ProfileTracker() {
+			@Override
+			protected void onCurrentProfileChanged(Profile oldProfile, Profile currentProfile) {
+				_context.dispatchStatusEventAsync("OPEN_SESSION_SUCCESS", "OK");
+			}
+		};
 
 		LoginManager.getInstance().setLoginBehavior(_context.getLoginBehavior());
 		LoginManager.getInstance().setDefaultAudience(_context.getDefaultAudience());
