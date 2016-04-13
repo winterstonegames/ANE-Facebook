@@ -160,19 +160,17 @@ import flash.display.Stage;
 					log("ERROR - Invalid HTTP method: " + httpMethod + " (must be GET, POST or DELETE)");
 					return;
 				}
-// Separate parameters keys and values
-//				var keys:Array = [];
-//				var values:Array = [];
-//				for (var key:String in parameters) {
-//					var value:String = parameters[key] as String;
-//					if (value) {
-//						keys.push(key);
-//						values.push(value);
-//					}
-//				}
-//
+
 				parameters.access_token = accessToken.tokenString;
-				FacebookMobile.api(graphPath, callback, parameters, httpMethod);
+				var cb:Function = function(result:Object, fail:Object) {
+					if(fail) {
+						callback({body: fail});
+					} else {
+						callback(result);
+					}
+				};
+
+				FacebookMobile.api(graphPath, cb, parameters, httpMethod);
 			} else {
 
 				log("You must call init() before any other method!");
