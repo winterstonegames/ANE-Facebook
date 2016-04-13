@@ -142,6 +142,44 @@ import flash.display.Stage;
 		}
 
 		/**
+		 * Run a Facebook request with a Graph API path.
+		 *
+		 * @param graphPath A Graph API path.
+		 * @param parameters (Optional) An object (key-value pairs) containing the request parameters.
+		 * @param httpMethod (Optional) The HTTP method to use (GET, POST or DELETE). Default is GET.
+		 * @param callback (Optional) A callback function of the following form:
+		 * <code>function myCallback(data:Object)</code>, where <code>data</code> is the parsed JSON
+		 * object returned by Facebook.
+		 */
+		public function requestWithGraphPath(graphPath:String, parameters:Object = null, httpMethod:String = "GET", callback:Function = null):void
+		{
+			if (_initialized) {
+
+				// Verify the HTTP method
+				if (httpMethod != "GET" && httpMethod != "POST" && httpMethod != "DELETE") {
+					log("ERROR - Invalid HTTP method: " + httpMethod + " (must be GET, POST or DELETE)");
+					return;
+				}
+// Separate parameters keys and values
+//				var keys:Array = [];
+//				var values:Array = [];
+//				for (var key:String in parameters) {
+//					var value:String = parameters[key] as String;
+//					if (value) {
+//						keys.push(key);
+//						values.push(value);
+//					}
+//				}
+//
+				parameters.access_token = accessToken.tokenString;
+				FacebookMobile.api(graphPath, callback, parameters, httpMethod);
+			} else {
+
+				log("You must call init() before any other method!");
+			}
+		}
+
+		/**
 		 * Open a new session with a given set of read permissions.<br><br>
 		 *
 		 * @param permissions An array of requested <strong>read</strong> permissions.
