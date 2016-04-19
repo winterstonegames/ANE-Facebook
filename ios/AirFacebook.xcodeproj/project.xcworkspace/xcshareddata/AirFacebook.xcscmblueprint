@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "8CF47A5933E46E5C5F1751898C374F337C123D42",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "AE200B4977152D0FD96C2C15BA59D9D736A2FE59" : 0,
+    "8CF47A5933E46E5C5F1751898C374F337C123D42" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "D2B7EF18-1E68-4765-B7AE-6308914F31BC",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "AE200B4977152D0FD96C2C15BA59D9D736A2FE59" : "..",
+    "8CF47A5933E46E5C5F1751898C374F337C123D42" : "ANE-Facebook"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "AirFacebook",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "ios\/AirFacebook.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/freshplanet\/ANE-Facebook",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "8CF47A5933E46E5C5F1751898C374F337C123D42"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "ssh:\/\/git.slot-america.com:7999\/slot\/mobile-client.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "AE200B4977152D0FD96C2C15BA59D9D736A2FE59"
+    }
+  ]
+}

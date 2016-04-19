@@ -31,7 +31,6 @@ FREContext AirFBCtx = nil;
     NSMutableDictionary *shareActivities;
 }
 
-
 static AirFacebook *sharedInstance = nil;
 
 + (AirFacebook *)sharedInstance
@@ -252,8 +251,6 @@ DEFINE_ANE_FUNCTION(initFacebook)
     [AirFacebook log:@"initFacebook"];
 
     NSString *appID = FPANE_FREObjectToNSString(argv[0]);
-
-
     NSString *callback = FPANE_FREObjectToNSString(argv[1]);
 
     // Initialize Facebook
@@ -392,6 +389,29 @@ DEFINE_ANE_FUNCTION(requestWithGraphPath)
             }
         }];
     }
+    
+    return nil;
+}
+
+DEFINE_ANE_FUNCTION(fetchDeferredUri)
+{
+    NSString *callback = FPANE_FREObjectToNSString(argv[0]);
+    
+    [AirFacebook log:@"fetchDeferredAppLink"];
+    [FBSDKAppLinkUtility fetchDeferredAppLink:^(NSURL *url, NSError *error) {
+        NSMutableString *logMessage = [NSMutableString stringWithFormat:@"Did fetch link with url: %@", url];
+        [AirFacebook log:logMessage];
+        if (error) {
+            NSMutableString *logMessage = [NSMutableString stringWithFormat:@"Received error while fetching deferred app link %@", error];
+            [AirFacebook log:logMessage];
+        }
+        if (url) {
+            NSMutableString *logMessage = [NSMutableString stringWithFormat:@"Found url: %@", url];
+            [AirFacebook log:logMessage];
+            NSString *urlString = [url absoluteString];
+            [AirFacebook dispatchEvent:[NSString stringWithFormat:@"DEFERRED_%@", callback] withMessage:urlString];
+        }
+    }];
     
     return nil;
 }
@@ -543,6 +563,7 @@ void AirFacebookContextInitializer(void* extData, const uint8_t* ctxType, FRECon
         @"logInWithPermissions":            [NSValue valueWithPointer:&logInWithPermissions],
         @"logOut":                          [NSValue valueWithPointer:&logOut],
         @"requestWithGraphPath":            [NSValue valueWithPointer:&requestWithGraphPath],
+        @"fetchDeferredUri":                [NSValue valueWithPointer:&fetchDeferredUri],
         
         // Settings
         @"setDefaultShareDialogMode":       [NSValue valueWithPointer:&setDefaultShareDialogMode],

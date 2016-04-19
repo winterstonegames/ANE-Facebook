@@ -177,6 +177,16 @@ import flash.display.Stage;
 			}
 		}
 
+        /**
+         * Fetches the uri which the app was loaded with if not installed when opening the uri
+         *
+         * @param onFetched     Called when Facebook SDK has retrieved the uri
+         */
+        public function fetchDeferredUri(onFetched:Function):void
+        {
+            log("Not implemented on desktop");
+        }
+
 		/**
 		 * Open a new session with a given set of read permissions.<br><br>
 		 *

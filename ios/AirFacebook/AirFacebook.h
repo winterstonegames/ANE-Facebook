@@ -53,6 +53,7 @@ DEFINE_ANE_FUNCTION(getProfile);
 DEFINE_ANE_FUNCTION(logInWithPermissions);
 DEFINE_ANE_FUNCTION(logOut);
 DEFINE_ANE_FUNCTION(requestWithGraphPath);
+DEFINE_ANE_FUNCTION(fetchDeferredUri);
 
 // Settings
 DEFINE_ANE_FUNCTION(setDefaultAudience);
